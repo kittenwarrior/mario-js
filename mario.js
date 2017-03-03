@@ -1,36 +1,45 @@
+drawPyramid(5);
 
-printPyramid(5);
 
-
-/*
- * printPyramid
+/**
+ * drawPyramid
  *
- * Prints to the console a pyramid of '#' characters of the specified height
- * For example, if height is 5, the console will look like this:
- *          ##
- *         ###
- *        ####
- *       #####
- *      ######
+ * Renders, in the HTML document, a Mario pyramid of the specified height
  */
-function printPyramid(height) {
-  console.log(height);
-    console.log("Uh oh... the pyramid is under construction.");
-    console.log("Check back soon, our developers are hard at work as we speak!");
+function drawPyramid(height) {
 
-    for(var row=0; row<height; row++){
+    // TODO 2 - Done!
+    // delete the "under construction" element, ie the <div id="notice">
+    var construction = document.getElementByID("construction");
+    construction.innerHTML = "";
 
-      var hashes = "";
-      var spaces = "";
 
-      //build spaces
-      for (var sp=0; sp < height-row-1; sp++){
-        spaces += " "
-      }
-      //build row of hashes
-      for(var hs=0; hash <= row+1; hash++){
-        hashes += "#"
-      }
-      console.log(spaces+hashes)
+    // for each row....
+    for (var row = 0; row < height; row++) {
+
+        // figure out number of bricks and spaces
+        var numBricks = row + 2;
+        var numSpaces = height - row - 1;
+
+        // build up a string for this row
+        var rowStr = "";
+        for (var i = 0; i < numSpaces; i++) {
+            rowStr += "."; // QUIZ: what happens if we use a space (" ") instead of a period?
+        }
+        for (var i = 0; i < numBricks; i++) {
+            rowStr += "#";
+        }
+
+        // TODO 1 - DONE!
+        // create an element whose inner text is rowStr,
+        // and insert it as a child of the container <div id="pyramid">
+        var domRow = document.createElement('p');
+        domROw.append(rowStr);
+
+        construction.append(domRow);
+        // you can delete this now
+        console.log(rowStr)
+
+
     }
 }
